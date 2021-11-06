@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Historical Data</title>
+    <style>
+    legend {
+    background-color: #000;
+    color: #fff;
+    padding: 3px 6px;
+}
+
+.output {
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input {
+    margin: .4rem;
+}
+</style>
+  </head>
+  <body>
+    <h1>Get Historical Data</h1>
+
+    <fieldset>
+    <legend>Choose Desired Date:</legend>
+
+    <div>
+        <label for="start">Start</label>
+        <input type="date" id="start" name="day"
+               value="2018-07-22"
+               min="1999-01-01" max="2018-12-31" /> <br />
+        <label for="Base">Base Currency:</label>
+        <input type="text" id="Base" name="base-currency" />
+    </div>
+    </fieldset>
+
+<button id="getData">Get Data</button>
+
+<div id="ratesdiv">
+</div>
+
+<script>
+let API_KEY = "bdb73d9ed01a4941b20a557206a6c2d3";
+let url = "http://data.fixer.io/api/"
+
+function retrieveDate() {
+  let dateControl = document.querySelector('input[id="start"]');
+  //console.log(dateControl);
+
+//  document.getElementById("historicDate").innerHTML = dateControl.value;
+fetch(url + dateControl.value + "?" +"access_key=" + API_KEY)
+.then(function(response) {
+return response.json();
+})
+.then(function(myJson) {
+console.log(JSON.stringify(myJson));
+let JSONRates = myJson.rates;
+
+Object.entries(JSONRates).forEach(([key, value]) => {
+// if (key === FromValue) {
+ // console.log(value)
+//}
+// console.log(`key= ${key} value = ${value}`)
+
+  let ptag = document.createElement("p");
+  let newline = document.createTextNode(`${key} : ${value}`);
+  ptag.appendChild(newline);
+  let divtag = document.getElementById("ratesdiv");
+  divtag.appendChild(ptag);
+  console.log(`${key} : ${value}`)
+
+
+});
+
+//document.getElementById("ConvertedValue").innerHTML = base;
+});
+}
+
+document.getElementById('getData').addEventListener("click", retrieveDate, false);
+
+
+</script>
+
+
+
+  </body>
+</html>
