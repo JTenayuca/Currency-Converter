@@ -1,0 +1,2 @@
+# Currency-Converter
+A currency converter built in Javascript that uses the fetch api to obtain exchange rates and convert between currencies. Please note this app is for educational purposes only and exchange rates should not be used for financial purposes. The api key has been removed for security purposes. However a free api key can be obtained from fixer.io. Place the api key in quotes into the api_key variable at the top of each script.
