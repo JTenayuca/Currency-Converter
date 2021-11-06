@@ -1,4 +1,4 @@
-let API_KEY = "bdb73d9ed01a4941b20a557206a6c2d3";
+let API_KEY = "<fixer.io api key"; //Go to fixer.io and get a free api key for a working example
 
 let url = "http://data.fixer.io/api/latest?access_key=";
 let converturl = "http://data.fixer.io/api/convert";

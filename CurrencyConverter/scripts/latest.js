@@ -1,4 +1,4 @@
-let API_KEY = "bdb73d9ed01a4941b20a557206a6c2d3";
+let API_KEY = "<fixer.io api key>"; //obtain for free on fixer.io
 
 let url = "http://data.fixer.io/api/latest?access_key=";
 
